@@ -1,13 +1,14 @@
 require 'rainbow'
 
+$bids = [Bid.all.sample, Bid.all.sample, Bid.all.sample]
 
 class CommandLineInterface
 
 def run
   greet
   selected_club = select_club
-  second_menu
-  confirm_menu_choice
+  second_menu(selected_club)
+  confirm_menu_choice(selected_club)
 end
 
 def greet
@@ -41,7 +42,7 @@ def confirm_club
 end
 
 
-def second_menu
+def second_menu(selected_club)
   puts "Please select the number for the action you would like to take."
   puts "---------------------------"
   puts Rainbow("1|").blue.bright + " View bids"
@@ -49,13 +50,13 @@ def second_menu
   puts Rainbow("3|").blue.bright + " Withdraw bids"
 end
 
-def confirm_menu_choice
+def confirm_menu_choice(selected_club)
 input = " "
   while input
     input = gets.chomp
   case input
   when "1"
-    third_menu_view
+    third_menu_view(selected_club)
   when "2"
       third_menu_make
     when "3"
@@ -68,8 +69,11 @@ input = " "
   end
 end
 
+def display_bid(bid)
+  puts "#{bid.club.name} bid on #{bid.new_player.name} for #{bid.amount}"
+end
 
-def third_menu_view
+def third_menu_view(selected_club)
   puts "Please select your number from the actions below."
   puts "---------------------------"
   puts Rainbow("1|").blue.bright + " All bids"
@@ -82,8 +86,10 @@ def third_menu_view
     case input
     when "1"
       #shows isting of bids
+      Bid.all.each{|bid| display_bid(bid)}
     when "2"
         #shows bids by club
+        selected_club.bids.each{|bid| display_bid(bid)}
       when "3"
           #shows bids by player
         break

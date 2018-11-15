@@ -3,18 +3,14 @@ class Club < ActiveRecord::Base
   has_many :bids
 
   #VIEW-Bids by club
-  def bids_by_club(club)
-    all_bids.select {|club| club.name == club}
+  def bids_by_club
+    Bid.all.select {|bid| bid.club == self}
   end
 
-  #VIEW-Bids by player
-  def bids_by_club(player)
-    all_bids.select {|player| player.name == player}
-  end
 
   #MAKE-Bid for a particular player
   def new_bid(player, amount)
-    bid = Bid.new
+    bid = Bid.new(player, self, amount)
     if player.current_club == choosen_club
       puts "Cannot bid your own player"
     else
@@ -25,12 +21,12 @@ class Club < ActiveRecord::Base
 
 
   #WITHDRAW-Bid for a particular player
-  def withdraw_player_bid(new_player: name)
-    bids.find_by(new_player: id)
+  def withdraw_player_bid(player)
+    Bid.all.find_by(new_player: player).delete
   end
 
   #WWITHDRAW- all bids
-  def withdraw_all_bids(choosen_club)
+  def withdraw_all_bids
     self.bids.destroy_all
   end
 

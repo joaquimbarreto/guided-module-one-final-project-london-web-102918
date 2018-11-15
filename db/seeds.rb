@@ -28,16 +28,19 @@ ben_warren = NewPlayer.create(:name=>"Ben Warren", :current_club=>"Chelsea")
 naby_keita = NewPlayer.create(:name=>"Naby Keita", :current_club=>"Liverpool")
 christian_eriksen = NewPlayer.create(:name=>"Christian Eriksen", :current_club=>"Tottenham")
 alexis_sanchez = NewPlayer.create(:name=>"Alexis Sanchez", :current_club=>"Manchester United")
+benardo_silva = NewPlayer.create(:name=>"Bernado Silva", :current_club=>"Manchester City")
+ronaldo = NewPlayer.create(:name=>"Cristiano Ronaldo", :current_club=>"Juventus")
+dembele = NewPlayer.create(:name=>"Ousmane Dembele", :current_club=>"Barcelona")
 
 
 
-all_players = NewPlayer.all
-all_clubs = Club.all
-value_range = (10..100).to_a
-(1..100).each do |i|
-  Bid.create(:new_player=>all_players.sample, :club=> all_clubs.sample, :amount=>value_range.sample * 1000000)
-end
-bidA = Bid.create(:new_player=>ben_warren, :club=> liverpool, :amount=>10000000)
-# bidB = Bid.create(:amount=>12000000)
-# bidC = Bid.create(:amount=>7000000)
-# bidD = Bid.create(:amount=>4000000)
+# all_players = NewPlayer.all
+# all_clubs = Club.all
+# value_range = (10..100).to_a
+# (1..10).each do |i|
+#   Bid.create(:new_player=>all_players.sample, :club=> all_clubs.sample, :amount=>value_range.sample * 1000000)
+# end
+bidA = Bid.create(:new_player=>ben_warren, :club=> wolves, :amount=>10000000)
+bidB = Bid.create(:new_player=>dembele, :club=> liverpool, :amount=>12000000)
+bidC = Bid.create(:new_player=>benardo_silva, :club=> huddersfield,:amount=>7000000)
+bidD = Bid.create(:new_player=>alexis_sanchez, :club=> arsenal, :amount=>4000000)

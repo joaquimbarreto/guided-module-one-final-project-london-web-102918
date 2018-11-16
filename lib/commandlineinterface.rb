@@ -92,6 +92,7 @@ def third_menu_view(selected_club)
         selected_club.bids.each{|bid| display_bid(bid)}
       when "3"
           #shows bids by player
+          new_player.bids.each{|bid| display_bid(bid)}
         break
         else
           puts "Please try again. Make a choice between 1 and 3."
@@ -114,8 +115,10 @@ def third_menu_make
     case input
     when "1"
       #shows all players
+      new_players
     when "2"
-        #shows bids by player
+        #make new bid on player
+        selected_club.new_bid(player, amount)
         break
         else
           puts "Please try again. Choose 1 or 2."
@@ -138,11 +141,14 @@ def third_menu_withdraw
     input = gets.chomp
     case input
     when "1"
-      #shows bids to withdraw
+      #shows own bids
+      selected_club.bids
     when "2"
-        #shows bids for players
+        #withdraw one own bid
+        selected_club.withdraw_player_bid(player)
       when "3"
-          #shows withdraw for all bids
+          #withdraw for all bids
+          selected_club.withdraw_all_bids
         break
         else
           puts "Please try again. Make a choice between 1 and 3."

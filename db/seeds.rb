@@ -3,7 +3,7 @@ NewPlayer.delete_all
 Bid.delete_all
 
 bournemouth = Club.create(:name=>"AFC Bournemouth")
-arsenal = Club.create(:name=>"Aresenal")
+arsenal = Club.create(:name=>"Arsenal")
 brighton = Club.create(:name=>"Brighton & Hove Albion")
 burnley = Club.create(:name=>"Burnley")
 cardiff = Club.create(:name=>"Cardiff City")

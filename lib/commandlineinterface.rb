@@ -102,6 +102,7 @@ class CommandLineInterface
             puts "-----"
           end
           break
+
         else
           puts "Please try again. Make a choice between 1 and 3."
         end
@@ -113,6 +114,7 @@ class CommandLineInterface
     puts "---------------------------"
     puts Rainbow("1|").blue.bright + " View all players"
     puts Rainbow("2|").blue.bright + " Bid on a player"
+
 
     input = " "
     while input
@@ -163,6 +165,7 @@ class CommandLineInterface
     puts Rainbow("3|").blue.bright + " Withdraw all bids"
 
 
+
     input = " "
     while input
       input = gets.chomp
@@ -177,6 +180,7 @@ class CommandLineInterface
           else
             puts "Please try again. Make a choice between 1 and 3."
           end
+
       end
   end
 
